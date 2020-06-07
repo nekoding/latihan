@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi mata uang</title>
+    <link rel="stylesheet" href="tailwind.css">
+</head>
+<body>
+
+    <div id="app">
+        <div class="text-center" id="title">
+            <h1 class="text-center mt-3 text-2xl">Konversi Mata Uang</h1>
+            <p class="inline">Update : {{ rate.date }}</p>
+            <p class="inline">| data provided by : </p> 
+            <a class="text-blue-500" href="https://exchangeratesapi.io/">exchangerateapi.io</a>
+        </div>
+
+        <div class="block px-4 text-center">
+            <label for="">Nilai rupiah : </label>
+            <input class="bg-blue-300 rounded p-2 mt-3" type="text" v-model="idr">
+        </div>
+
+        <div class="w-full">
+            <div class="p-5">
+                <table class="mx-auto table-auto sm:table-fixed">
+                    <thead>
+                      <tr>
+                        <th class="px-4 py-2 sm:w-1/2">Mata uang</th>
+                        <th class="px-4 py-2 sm:w-1/2">Konversi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(exchange, index) in rate.rates" :key="index">
+                            <td class="border px-4 py-2">{{ index }}</td>
+                            <td class="border px-4 py-2">{{ convertRate(exchange) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        
+        
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
